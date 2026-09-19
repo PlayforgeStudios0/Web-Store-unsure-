@@ -1,0 +1,66 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PLAYFORGE Hub - Publisher Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-brand">
+      <span class="brand-logo">⚡</span>
+      <span class="brand-title">PLAYFORGE <small>DASHBOARD</small></span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Store</a>
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="admin.html" class="btn-admin">+ Publish App</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="dashboard-grid">
+      <div class="stat-card">
+        <h5>Total Published</h5>
+        <p id="statTotalCount">0</p>
+      </div>
+      <div class="stat-card">
+        <h5>Total Downloads</h5>
+        <p id="statTotalDownloads">0</p>
+      </div>
+      <div class="stat-card">
+        <h5>Subscribed Users</h5>
+        <p id="statSubscriptions">0</p>
+      </div>
+      <div class="stat-card">
+        <h5>Active Monitored Packages</h5>
+        <p id="statPackages">0</p>
+      </div>
+    </section>
+
+    <section class="dashboard-table-container">
+      <h3 style="margin-bottom: 1rem; color: var(--text-white);">Published Packages</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Application</th>
+            <th>Package Identity</th>
+            <th>Version</th>
+            <th>Monetization</th>
+            <th>Age Rating</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="dashboardTableBody">
+          <tr><td colspan="6" style="text-align:center;">Fetching published releases...</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

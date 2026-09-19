@@ -1,0 +1,147 @@
+<!-- admin.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PLAYFORGE Hub - Publisher Admin</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="navbar">
+    <div class="nav-brand">
+      <span class="brand-logo">⚡</span>
+      <span class="brand-title">PLAYFORGE <small>PUBLISHER</small></span>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Store</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="admin.html" class="active">Publish / Edit</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div class="form-card">
+      <h2 id="formTitle" style="color: var(--text-white); margin-bottom: 1.5rem;">Publish New Release</h2>
+      
+      <form id="publishForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="itemType">Category Standard</label>
+            <select id="itemType" required>
+              <option value="apps">App (com.playforge.breeze)</option>
+              <option value="games">Game (com.playforge.cube)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="appName">Title / Name</label>
+            <input type="text" id="appName" placeholder="e.g. Cube Craft Survival" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="packageIdentity">Package Name Identity (Auto-enforced standard)</label>
+          <input type="text" id="packageIdentity" placeholder="com.playforge.cube.cubecraft" required>
+        </div>
+
+        <!-- Version Bump Section -->
+        <div class="form-row" id="versionBumpSection" style="display:none;">
+          <div class="form-group">
+            <label for="bumpType">Update Release Type</label>
+            <select id="bumpType">
+              <option value="none">Keep Current Version</option>
+              <option value="bugfix">Bug Fix / Patch (+0.0.1)</option>
+              <option value="minor">Minor Feature (+0.1.0, reset patch)</option>
+              <option value="major">Major Overhaul (+1.0.0, reset minor/patch)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="appVersion">Version String</label>
+            <input type="text" id="appVersion" value="1.0.0" required>
+          </div>
+        </div>
+
+        <div class="form-row" id="initialVersionSection">
+          <div class="form-group">
+            <label for="appVersionInitial">Initial Version</label>
+            <input type="text" id="appVersionInitial" value="1.0.0" required>
+          </div>
+        </div>
+
+        <!-- Monetization & Subscription -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="monetizationType">Monetization Model</label>
+            <select id="monetizationType">
+              <option value="free">Free</option>
+              <option value="paid">One-time Purchase</option>
+              <option value="subscription">Subscription Tier</option>
+            </select>
+          </div>
+          <div class="form-group" id="priceGroup">
+            <label for="appPrice">Price (USD)</label>
+            <input type="number" id="appPrice" step="0.01" value="0.00">
+          </div>
+        </div>
+
+        <div id="subscriptionFields" style="display: none;" class="form-row">
+          <div class="form-group">
+            <label for="subInterval">Billing Interval</label>
+            <select id="subInterval">
+              <option value="monthly">Monthly</option>
+              <option value="yearly">Yearly</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="subTierName">Subscription Tier Name</label>
+            <input type="text" id="subTierName" placeholder="e.g. VIP Pass, Pro Access">
+          </div>
+        </div>
+
+        <!-- Metadata -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ageRating">Age Restriction Rating</label>
+            <select id="ageRating">
+              <option value="3+">3+</option>
+              <option value="7+">7+</option>
+              <option value="12+">12+</option>
+              <option value="16+">16+</option>
+              <option value="18+">18+ (Triggers Verification Prompt)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="appTags">Tags (Comma-separated)</label>
+            <input type="text" id="appTags" placeholder="Action, Offline, Pixel Art">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="shortDescription">Short Description</label>
+          <input type="text" id="shortDescription" placeholder="Brief tagline for catalog card">
+        </div>
+
+        <div class="form-group">
+          <label for="fullDescription">Full Description</label>
+          <textarea id="fullDescription" rows="4" placeholder="Detailed application features..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="updateNotes">Update Release Notes</label>
+          <textarea id="updateNotes" rows="2" placeholder="What's new in this version?"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="githubToken">GitHub Access Token (Required for Pushing)</label>
+          <input type="password" id="githubToken" placeholder="ghp_..." required>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" id="submitBtn">Submit Release</button>
+      </form>
+    </div>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
